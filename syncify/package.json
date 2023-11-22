@@ -1,13 +1,16 @@
 {
   "name": "syncify-hub",
   "version": "1.0.0",
-  "description": "",
+  "description": "Syncify-Hub sync your music with any platform",
   "main": "./dist/main/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ./src/main/main.ts",
+    "copyhtml": "copyfiles -u 1 -e \"./src/**/*.ts\" -a \"./src/renders/**\" \"./dist/src/\"",
+    "start": "rm -rf ./dist && npm run build && npm run copyhtml && electron ./dist/main/main.js",
+    "deploy": "rm -rf ./dist && rm -rf ./build && npm run build && npm run copyhtml && electron-builder -m",
     "build": "tsc",
-    "dev": "npm run build && electron ./dist/main/main.js"
+    "dev": "npm run build && electron ./dist/main/main.js",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": {
     "type": "git",
