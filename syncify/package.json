@@ -5,7 +5,7 @@
   "main": "./dist/main/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copyhtml": "copyfiles -u 1 -e \"./src/**/*.ts\" -a \"./src/renders/**\" \"./dist/src/\"",
+    "copyhtml": "copyfiles -u 1 -e \"./src/**/*.ts\" -a \"./src/renders/**\" \"./dist/\"",
     "start": "rm -rf ./dist && npm run build && npm run copyhtml && electron ./dist/main/main.js",
     "deploy": "rm -rf ./dist && rm -rf ./build && npm run build && npm run copyhtml && electron-builder -m",
     "postinstall": "electron-builder install-app-deps",
