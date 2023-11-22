@@ -19,6 +19,46 @@
   "bugs": {
     "url": "https://github.com/m-sanchez-dev/Syncify-Hub/issues"
   },
+  "build": {
+    "generateUpdatesFilesForAllChannels": true,
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "icon": "assets/images/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        "zip"
+      ]
+    },
+    "mac": {
+      "icon": "assets/images/icon.icns",
+      "target": [
+        "zip",
+        "dmg"
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "zip"
+      ],
+      "category": "Utility",
+      "icon": "assets/images/linux-icon.png"
+    }
+  },
   "homepage": "https://github.com/m-sanchez-dev/Syncify-Hub#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.12.0",
