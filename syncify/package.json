@@ -1,0 +1,74 @@
+{
+  "name": "syncify-hub",
+  "version": "1.0.0",
+  "description": "Syncify-Hub sync your music with any platform",
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copyhtml": "copyfiles -u 1 -e \"./src/**/*.ts\" -a \"./src/renders/**\" \"./dist/\"",
+    "start": "rm -rf ./dist && npm run build && npm run copyhtml && electron ./dist/main/main.js",
+    "deploy": "rm -rf ./dist && rm -rf ./build && npm run build && npm run copyhtml && electron-builder -m",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-sanchez-dev/Syncify-Hub.git"
+  },
+  "keywords": [],
+  "author": "Mikel Sanchez",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/m-sanchez-dev/Syncify-Hub/issues"
+  },
+  "build": {
+    "generateUpdatesFilesForAllChannels": true,
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "icon": "assets/images/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        "zip"
+      ]
+    },
+    "mac": {
+      "icon": "assets/images/icon.icns",
+      "target": [
+        "zip",
+        "dmg"
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "zip"
+      ],
+      "category": "Utility",
+      "icon": "assets/images/linux-icon.png"
+    }
+  },
+  "homepage": "https://github.com/m-sanchez-dev/Syncify-Hub#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "electron": "^27.1.2",
+    "electron-builder": "^24.6.4",
+    "eslint": "^8.54.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
