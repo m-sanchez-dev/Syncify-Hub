@@ -8,9 +8,8 @@
     "copyhtml": "copyfiles -u 1 -e \"./src/**/*.ts\" -a \"./src/renders/**\" \"./dist/src/\"",
     "start": "rm -rf ./dist && npm run build && npm run copyhtml && electron ./dist/main/main.js",
     "deploy": "rm -rf ./dist && rm -rf ./build && npm run build && npm run copyhtml && electron-builder -m",
-    "build": "tsc",
-    "dev": "npm run build && electron ./dist/main/main.js",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
